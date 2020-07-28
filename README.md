@@ -8,10 +8,11 @@ $$\pi \approx \frac{22}{7}$$
 
 This extension is not yet published on the Chrome web store. To install manually:
 
-1. Clone this repo
-2. Head to `chrome://extensions`
-3. Ensure `Developer mode` is toggled
-4. Click the "Load unpacked" button and select the `dist` folder within the cloned repo
+1. Download the [latest release](https://github.com/AaronCQL/katex-github-chrome-extension/releases)
+2. Extract the `dist` folder within `dist.zip`
+3. Head to `chrome://extensions`
+4. Ensure `Developer mode` is toggled
+5. Click the "Load unpacked" button and select the extracted `dist` folder
 
 ## Developing
 
