@@ -22,14 +22,15 @@ export default {
     commonjs(),
     copy({
       targets: [
-        { src: "node_modules/katex/dist/fonts/*", dest: "dist/fonts" },
+        // copy KaTeX required fonts to /src, so that it gets bundled into /dist
+        { src: "node_modules/katex/dist/fonts/*", dest: "src/fonts" },
+        // copy KaTeX required css to /src, so that it gets bundled into /dist
         {
           src: "node_modules/katex/dist/katex.css",
           dest: "src",
           transform: transformCss,
         },
       ],
-      verbose: true,
       hook: "buildStart",
     }),
   ],

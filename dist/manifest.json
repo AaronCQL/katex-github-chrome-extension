@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "katex-github-extension",
+  "name": "katex-github-chrome-extension",
   "version": "0.1.0",
   "content_scripts": [
     {
