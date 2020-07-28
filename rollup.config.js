@@ -32,6 +32,7 @@ export default {
         },
       ],
       hook: "buildStart",
+      copyOnce: true,
     }),
   ],
 };

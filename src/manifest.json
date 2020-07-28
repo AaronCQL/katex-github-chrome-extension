@@ -2,6 +2,7 @@
   "content_scripts": [
     {
       "matches": ["https://github.com/*"],
+      "run_at": "document_end",
       "js": ["index.js"],
       "css": ["katex.css"]
     }
