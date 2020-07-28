@@ -1,0 +1,18 @@
+{
+  "name": "katex-github-extension",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.4.0",
+    "katex": "^0.12.0",
+    "rollup": "^2.23.0",
+    "rollup-plugin-chrome-extension": "^3.2.0",
+    "rollup-plugin-copy": "^3.3.0"
+  }
+}

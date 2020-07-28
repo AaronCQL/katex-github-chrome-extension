@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "katex-github-extension",
+  "version": "0.1.0",
+  "content_scripts": [
+    {
+      "js": [
+        "assets/index-b8a067f0.js"
+      ],
+      "matches": [
+        "https://github.com/*"
+      ],
+      "css": [
+        "katex.css"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    "index.js",
+    "fonts/*"
+  ],
+  "permissions": []
+}
