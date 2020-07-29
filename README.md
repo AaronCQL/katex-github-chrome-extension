@@ -60,9 +60,11 @@ A quick fix for this has been implemented to recursively walk through all text n
 
 #### Examples
 
-Works: $1 \\ 2$
-
-Fails: $1\\2$
+|    Raw     | Rendered |      Working?      |
+| :--------: | :------: | :----------------: |
+| `$1 \\ 2$` | $1 \\ 2$ | :heavy_check_mark: |
+| `$1\\ 2$`  | $1\\ 2$  | :heavy_check_mark: |
+|  `$1\\2$`  |  $1\\2$  |        :x:         |
 
 ### Subscripts using `_` may not render correctly
 
@@ -76,6 +78,7 @@ $ \text{H}<em>h + X</em>\text{x} $
 
 #### Examples
 
-Works: $H_h + X_x$
-
-Fails: $\text{H}_h + X_\text{x}$
+|             Raw             |         Rendered          |      Working?      |
+| :-------------------------: | :-----------------------: | :----------------: |
+|        `$H_h + X_x$`        |        $H_h + X_x$        | :heavy_check_mark: |
+| `$\text{H}_h + X_\text{x}$` | $\text{H}_h + X_\text{x}$ |        :x:         |
