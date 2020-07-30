@@ -1,18 +1,16 @@
 # KaTeX GitHub Chrome Extension
 
+[cws]: https://chrome.google.com/webstore/detail/refined-github/cgolaobglebjonjiblcjagnpmdmlgmda "Chrome Web Store link"
+
 Chrome extension to display LaTeX math equations in GitHub markdown previews. If this is installed correctly, the following should show a properly rendered equation in the centre of the page:
 
 $$ \nabla L_D(\vec{w}) = \left[ \frac{\partial L_D}{\partial w_0},\dots, \frac{\partial L_D}{\partial w_n}  \right] $$
 
 ## Installing
 
-This extension is not yet published on the Chrome web store. To install manually:
+[![Chrome Web Store version](https://img.shields.io/chrome-web-store/v/cgolaobglebjonjiblcjagnpmdmlgmda?label=GitHub%20Math%20Display)][cws]
 
-1. Download the [latest release](https://github.com/AaronCQL/katex-github-chrome-extension/releases)
-2. Extract `katex-github-chrome-extension-X.X.X.zip` to a folder
-3. Head to `chrome://extensions`
-4. Ensure `Developer mode` is toggled
-5. Click the "Load unpacked" button and select the extracted `katex-github-chrome-extension-X.X.X` folder
+Install via the [Chrome Web Store][cws].
 
 ## Developing
 
