@@ -36,7 +36,7 @@ $ yarn build:prod
 
 After running the above command, the built `.zip` file should be located in the `/releases` directory, which can then be uploaded to the Chrome webstore.
 
-> Bump version in `package.json`; edit chrome extension's name and description in `manifest.json`.
+> Edit version in `package.json`; edit chrome extension's name and description in `manifest.json`.
 
 ### [rollup-plugin-chrome-extension](https://github.com/extend-chrome/rollup-plugin-chrome-extension)
 
@@ -54,6 +54,8 @@ As per the docs, the css and font files must be included in `dist`. As such, `ro
 
 ### Newlines using double backslashes `\\` may not render correctly
 
+> **FIXED**: custom macros are provided to the `katex` options such that every single backslash is macroed to a double backslash.
+
 GitHub's markdown automatically escapes the double backslash, resulting in only a single backslash in the output HTML.
 
 ```latex
@@ -67,15 +69,13 @@ $$
 $$ x = 23 \ x + 2 = 25 $$
 ```
 
-A quick fix for this has been implemented to recursively walk through all text nodes, and replace all instances of `\` that has any of the following: new line (`\n`), carriage return (`\r`), or spaces (`\s`), with `\\`.
-
 #### Examples
 
 |    Raw     | Rendered |      Working?      |
 | :--------: | :------: | :----------------: |
 | `$1 \\ 2$` | $1 \\ 2$ | :heavy_check_mark: |
 | `$1\\ 2$`  | $1\\ 2$  | :heavy_check_mark: |
-|  `$1\\2$`  |  $1\\2$  |        :x:         |
+|  `$1\\2$`  |  $1\\2$  | :heavy_check_mark: |
 
 ### Subscripts using `_` may not render correctly
 
