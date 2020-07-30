@@ -6,8 +6,12 @@ import {
   simpleReloader,
 } from "rollup-plugin-chrome-extension";
 import del from "rollup-plugin-delete";
+import { terser } from "rollup-plugin-terser";
+import zip from "rollup-plugin-zip";
 
 import transformCss from "./utils/transformCss";
+
+const isProd = process.env.NODE_ENV === "production";
 
 export default [
   {
@@ -40,6 +44,16 @@ export default [
     output: {
       dir: "dist",
       format: "esm",
+      plugins: isProd
+        ? [
+            terser({
+              compress: {
+                drop_console: true,
+              },
+            }),
+            zip({ dir: "." }),
+          ]
+        : [],
     },
     plugins: [
       // always put chromeExtension() before other plugins

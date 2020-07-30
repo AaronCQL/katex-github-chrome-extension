@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "rollup -c",
-    "watch": "rollup -c -w"
+    "watch": "rollup -c -w",
+    "build:prod": "NODE_ENV=production rollup -c"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",
@@ -14,6 +15,8 @@
     "rollup": "^2.23.0",
     "rollup-plugin-chrome-extension": "^3.2.0",
     "rollup-plugin-copy": "^3.3.0",
-    "rollup-plugin-delete": "^2.0.0"
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-terser": "^6.1.0",
+    "rollup-plugin-zip": "^1.0.1"
   }
 }
