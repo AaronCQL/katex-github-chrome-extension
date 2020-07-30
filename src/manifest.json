@@ -1,4 +1,7 @@
 {
+  "name": "GitHub Math Display",
+  "description": "Displays LaTeX math equations in GitHub markdown previews.",
+  "icons": { "128": "icon128.png" },
   "content_scripts": [
     {
       "matches": ["https://github.com/*"],

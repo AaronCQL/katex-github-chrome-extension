@@ -2,4 +2,4 @@
 /dist
 
 # built production zip
-*.zip
+/releases

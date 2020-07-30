@@ -51,7 +51,7 @@ export default [
                 drop_console: true,
               },
             }),
-            zip({ dir: "." }),
+            zip({ dir: "releases" }),
           ]
         : [],
     },

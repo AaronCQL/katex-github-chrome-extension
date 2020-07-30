@@ -9,23 +9,34 @@ $$ \nabla L_D(\vec{w}) = \left[ \frac{\partial L_D}{\partial w_0},\dots, \frac{\
 This extension is not yet published on the Chrome web store. To install manually:
 
 1. Download the [latest release](https://github.com/AaronCQL/katex-github-chrome-extension/releases)
-2. Extract the `dist` folder within `dist.zip`
+2. Extract `katex-github-chrome-extension-X.X.X.zip` to a folder
 3. Head to `chrome://extensions`
 4. Ensure `Developer mode` is toggled
-5. Click the "Load unpacked" button and select the extracted `dist` folder
+5. Click the "Load unpacked" button and select the extracted `katex-github-chrome-extension-X.X.X` folder
 
 ## Developing
 
 ```bash
 # install all dependencies
 $ yarn
-# develop with auto HMR
+# build non-minified bundle to /dist
+$ yarn build
+# watch for changes and build non-minified bundle to /dist; use this for developing
 $ yarn watch
-# build production zip file for chrome store upload
-$ yarn build:prod
 ```
 
 Head over to [`chrome://extensions/`](chrome://extensions/), and load the `dist` folder.
+
+## Publishing
+
+```bash
+# build minified bundle and zip it for chrome store upload
+$ yarn build:prod
+```
+
+After running the above command, the built `.zip` file should be located in the `/releases` directory, which can then be uploaded to the Chrome webstore.
+
+> Bump version in `package.json`; edit chrome extension's name and description in `manifest.json`.
 
 ### [rollup-plugin-chrome-extension](https://github.com/extend-chrome/rollup-plugin-chrome-extension)
 
