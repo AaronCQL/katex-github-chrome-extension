@@ -17,9 +17,11 @@ function renderMath() {
     ],
     throwOnError: false,
     strict: false,
-    // custom macro to replace all instances of single backslash \ to double backslash \\
     macros: {
+      // replace all instances of single backslash \ to double backslash \\
       "\\ ": "\\\\",
+      "\\\r": "\\\\",
+      "\\\n": "\\\\",
       "\\0": "\\\\0",
       "\\1": "\\\\1",
       "\\2": "\\\\2",
@@ -30,6 +32,9 @@ function renderMath() {
       "\\7": "\\\\7",
       "\\8": "\\\\8",
       "\\9": "\\\\9",
+
+      // for \; spacing
+      ";": "\\;",
     },
   });
 
