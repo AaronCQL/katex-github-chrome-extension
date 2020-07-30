@@ -8,13 +8,6 @@ function renderMath() {
     return;
   }
 
-  // replaces all instances of single backslash \ to double backslash \\
-  const treeWalker = document.createTreeWalker(readme, NodeFilter.SHOW_TEXT);
-  while (treeWalker.nextNode()) {
-    const node = treeWalker.currentNode;
-    node.nodeValue = node.nodeValue.replace(/\\[\n\s\r]+/g, "\\\\");
-  }
-
   renderMathInElement(readme, {
     delimiters: [
       { left: "$$", right: "$$", display: true },
@@ -24,7 +17,22 @@ function renderMath() {
     ],
     throwOnError: false,
     strict: false,
+    // custom macro to replace all instances of single backslash \ to double backslash \\
+    macros: {
+      "\\ ": "\\\\",
+      "\\0": "\\\\0",
+      "\\1": "\\\\1",
+      "\\2": "\\\\2",
+      "\\3": "\\\\3",
+      "\\4": "\\\\4",
+      "\\5": "\\\\5",
+      "\\6": "\\\\6",
+      "\\7": "\\\\7",
+      "\\8": "\\\\8",
+      "\\9": "\\\\9",
+    },
   });
+
   console.log("math rendered");
 }
 
