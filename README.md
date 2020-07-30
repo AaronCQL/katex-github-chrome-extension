@@ -1,8 +1,8 @@
 # KaTeX GitHub Chrome Extension
 
-Displays LaTeX math equations in GitHub READMEs using KaTeX. If this is installed correctly, the following should show a properly rendered equation in the centre of the page:
+Chrome extension to display LaTeX math equations in GitHub markdown previews. If this is installed correctly, the following should show a properly rendered equation in the centre of the page:
 
-$$\pi \approx \frac{22}{7}$$
+$$ \nabla L_D(\vec{w}) = \left[ \frac{\partial L_D}{\partial w_0},\dots, \frac{\partial L_D}{\partial w_n}  \right] $$
 
 ## Installing
 
@@ -21,8 +21,8 @@ This extension is not yet published on the Chrome web store. To install manually
 $ yarn
 # develop with auto HMR
 $ yarn watch
-# build for production
-$ yarn build
+# build production zip file for chrome store upload
+$ yarn build:prod
 ```
 
 Head over to [`chrome://extensions/`](chrome://extensions/), and load the `dist` folder.
