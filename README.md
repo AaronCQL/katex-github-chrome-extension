@@ -2,7 +2,7 @@
 
 [cws]: https://chrome.google.com/webstore/detail/refined-github/cgolaobglebjonjiblcjagnpmdmlgmda "Chrome Web Store link"
 
-**Display LaTeX flavoured math in GitHub markdown previews.**
+**Display LaTeX flavoured math in GitHub Markdown previews.**
 
 If this is installed correctly, the following should show a properly rendered equation in the centre of the page:
 
@@ -66,10 +66,10 @@ After running the above command, the built `.zip` file should be located in the 
 
 > **FIX**: custom macros are provided to the `katex` options such that every single backslash is macroed to a double backslash.
 
-GitHub's markdown automatically escapes the double backslash, resulting in only a single backslash in the output HTML.
+GitHub's Markdown automatically escapes the double backslash, resulting in only a single backslash in the output HTML.
 
 ```latex
-% in original markdown file:
+% in original Markdown file:
 $$
 x = 23 \\
 x + 2 = 25
@@ -90,7 +90,7 @@ $$ x = 23 \ x + 2 = 25 $$
 ### Subscripts using `_` may not render correctly
 
 ```latex
-% in original markdown file:
+% in original Markdown file:
 $ \text{H}_h + X_\text{x} $
 
 % would result in HTML as:
