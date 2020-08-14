@@ -104,7 +104,7 @@ $ \text{H}<em>h + X</em>\text{x} $
 |        `$H_h + X_x$`        |        $H_h + X_x$        | :heavy_check_mark: |
 | `$\text{H}_h + X_\text{x}$` | $\text{H}_h + X_\text{x}$ |        :x:         |
 
-## Contribution
+## Contributing
 
 Feature requests, bug reports, and PRs are welcome!
 
