@@ -1,5 +1,5 @@
 # For testing purposes
 
-Following should not render properly:
+Following *should not* render properly:
 
-$\text{H}_h + X_\text{x}$
+Some text before, the math: $\text{H}_h + X_\text{x}$, and some *italics after*.
