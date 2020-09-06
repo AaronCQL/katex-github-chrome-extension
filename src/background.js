@@ -1,4 +1,4 @@
-import { Messages } from "../utils/constants";
+import { Messages } from "./utils/constants";
 
 chrome.webNavigation.onHistoryStateUpdated.addListener((details) => {
   console.log(details);

@@ -1,5 +1,5 @@
 import renderMathInElement from "katex/dist/contrib/auto-render";
-import { Messages } from "../utils/constants";
+import { Messages } from "./utils/constants";
 
 function renderMath() {
   const readme = document.getElementById("readme");
