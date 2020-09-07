@@ -1,19 +1,19 @@
 {
   "name": "GitHub Math Display",
   "description": "Displays LaTeX math equations in GitHub markdown previews.",
-  "icons": { "128": "icon128.png" },
+  "icons": { "128": "assets/icon128.png" },
   "content_scripts": [
     {
       "matches": ["https://github.com/*"],
       "run_at": "document_start",
       "js": ["index.js"],
-      "css": ["katex.css"]
+      "css": ["assets/katex.css"]
     }
   ],
   "background": {
     "scripts": ["background.js"],
     "persistent": true
   },
-  "web_accessible_resources": ["index.js", "fonts/*"],
+  "web_accessible_resources": ["index.js", "assets/fonts/*"],
   "permissions": ["*://*.github.com/*", "webNavigation"]
 }
