@@ -10,7 +10,6 @@ function stripEmTags() {
 
   let pos = 0;
   while (pos >= 0) {
-    console.log(pos);
     // find first pos of "}<em>"
     pos = readme.innerHTML.indexOf("}<em>", pos);
     // replace "}<em>" and "</em>" after pos
