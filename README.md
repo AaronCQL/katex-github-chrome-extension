@@ -32,9 +32,9 @@ This project is bootstrapped using rollup-plugin-chrome-extension. All code is w
 
 The [auto-render extension](https://katex.org/docs/autorender.html) is used to recursively search for all text nodes and replace them with the corresponding rendered math.
 
-As per the docs, the css and font files must be included in `dist`. As such, `rollup-plugin-copy` is used to copy the KaTeX fonts and css located in `node_modules` to the `src` folder. These files are referenced in `src/manifest.json`, and will be automatically included in `dist` after running `yarn build`.
+As per the docs, the css and font files must be included in `dist`. As such, `rollup-plugin-copy` is used to copy the KaTeX fonts and css located in `node_modules` to the `src/assets` folder. These files are referenced in `src/manifest.json`, and will be automatically included in `dist` after running `yarn build`.
 
-**Note: the `src/fonts` folder and the `src/katex.css` file should not be modified**. Any modifications will be overwritten when building the files anyway.
+**Note: files in the `src/assets` folder SHOULD NOT be modified**. Any modifications will be overwritten when building the files anyway.
 
 ### Local development
 
@@ -87,7 +87,9 @@ $$ x = 23 \ x + 2 = 25 $$
 | `$1\\ 2$`  | $1\\ 2$  | :heavy_check_mark: |
 |  `$1\\2$`  |  $1\\2$  | :heavy_check_mark: |
 
-### Subscripts using `_` may not render correctly
+### (FIXED) Subscripts using `_` may not render correctly
+
+> **FIX**: see https://github.com/AaronCQL/katex-github-chrome-extension/pull/2
 
 ```latex
 % in original Markdown file:
@@ -102,7 +104,7 @@ $ \text{H}<em>h + X</em>\text{x} $
 |             Raw             |         Rendered          |      Working?      |
 | :-------------------------: | :-----------------------: | :----------------: |
 |        `$H_h + X_x$`        |        $H_h + X_x$        | :heavy_check_mark: |
-| `$\text{H}_h + X_\text{x}$` | $\text{H}_h + X_\text{x}$ |        :x:         |
+| `$\text{H}_h + X_\text{x}$` | $\text{H}_h + X_\text{x}$ |        :heavy_check_mark:         |
 
 ## Contributing
 
