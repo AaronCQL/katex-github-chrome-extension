@@ -1,6 +1,41 @@
 import renderMathInElement from "katex/dist/contrib/auto-render";
 import { Messages } from "./utils/constants";
 
+function stripEmTags() {
+  const readme = document.getElementById("readme");
+
+  if (!readme) {
+    return;
+  }
+
+  let pos = 0;
+  while (pos >= 0) {
+    console.log(pos);
+    // find first pos of "}<em>"
+    pos = readme.innerHTML.indexOf("}<em>", pos);
+    // replace "}<em>" and "</em>" after pos
+    readme.innerHTML =
+      readme.innerHTML.slice(0, pos) +
+      readme.innerHTML
+        .slice(pos)
+        .replace("}<em>", "}_")
+        .replace("</em>", "_");
+  }
+
+  pos = 0;
+  while (pos >= 0) {
+    // find first pos of "^<em>"
+    pos = readme.innerHTML.indexOf("^<em>", pos);
+    // replace "^<em>" and "</em>" after pos
+    readme.innerHTML =
+      readme.innerHTML.slice(0, pos) +
+      readme.innerHTML
+        .slice(pos)
+        .replace("^<em>", "^*")
+        .replace("</em>", "*");
+  }
+}
+
 function renderMath() {
   const readme = document.getElementById("readme");
 
@@ -47,7 +82,9 @@ const readmeObserver = new MutationObserver((mutations) => {
     for (const addedNode of mutation.addedNodes) {
       if (addedNode.id === "readme") {
         console.log("readme dom change detected");
-        return renderMath();
+        stripEmTags();
+        renderMath();
+        return; // break from all loops
       }
     }
   }
@@ -58,10 +95,12 @@ readmeObserver.observe(document.body, { childList: true, subtree: true });
 chrome.runtime.onMessage.addListener((request) => {
   if (request.type === Messages.ROUTE_CHANGED) {
     console.log("route change detected");
+    stripEmTags();
     renderMath();
   }
 });
 
 // on initial page load
 console.log("initial page load detected");
+stripEmTags();
 renderMath();
