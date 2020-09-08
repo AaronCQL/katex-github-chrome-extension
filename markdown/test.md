@@ -8,6 +8,14 @@
 
 {hello}\_hello\_
 
+(hello)*hello*
+
+{hello}*hello*
+
+(hello)\*hello\*
+
+{hello}\*hello\*
+
 $(f_{i})_{\ast}\mathscr{H}\rightarrow f_{i}(z)$
 
 Some text before, the math: $\text{H}_h + X_\text{x}$, and some *italics after*.
