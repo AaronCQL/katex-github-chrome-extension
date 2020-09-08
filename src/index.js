@@ -1,7 +1,7 @@
 import renderMathInElement from "katex/dist/contrib/auto-render";
 import { Messages } from "./utils/constants";
 
-function stripEmTags() {
+function transformProblematicEmTags() {
   const readme = document.getElementById("readme");
 
   if (!readme) {
@@ -18,6 +18,19 @@ function stripEmTags() {
       readme.innerHTML
         .slice(pos)
         .replace("}<em>", "}_")
+        .replace("</em>", "_");
+  }
+
+  pos = 0;
+  while (pos >= 0) {
+    // find first pos of ")<em>"
+    pos = readme.innerHTML.indexOf(")<em>", pos);
+    // replace ")<em>" and "</em>" after pos
+    readme.innerHTML =
+      readme.innerHTML.slice(0, pos) +
+      readme.innerHTML
+        .slice(pos)
+        .replace(")<em>", ")_")
         .replace("</em>", "_");
   }
 
@@ -81,7 +94,7 @@ const readmeObserver = new MutationObserver((mutations) => {
     for (const addedNode of mutation.addedNodes) {
       if (addedNode.id === "readme") {
         console.log("readme dom change detected");
-        stripEmTags();
+        transformProblematicEmTags();
         renderMath();
         return; // break from all loops
       }
@@ -94,12 +107,12 @@ readmeObserver.observe(document.body, { childList: true, subtree: true });
 chrome.runtime.onMessage.addListener((request) => {
   if (request.type === Messages.ROUTE_CHANGED) {
     console.log("route change detected");
-    stripEmTags();
+    transformProblematicEmTags();
     renderMath();
   }
 });
 
 // on initial page load
 console.log("initial page load detected");
-stripEmTags();
+transformProblematicEmTags();
 renderMath();
