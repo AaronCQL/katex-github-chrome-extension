@@ -1,6 +1,8 @@
 # For testing purposes
 
-Following *should not* render properly:
+(hello)_hello_
+
+{hello}_hello_
 
 $(f_{i})_{\ast}\mathscr{H}\rightarrow f_{i}(z)$
 
