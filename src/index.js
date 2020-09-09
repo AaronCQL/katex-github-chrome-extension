@@ -1,47 +1,26 @@
 import renderMathInElement from "katex/dist/contrib/auto-render";
 import { Messages } from "./utils/constants";
 
-function stripEmTags() {
-  const readme = document.getElementById("readme");
-
-  if (!readme) {
-    return;
-  }
-
-  let pos = 0;
-  while (pos >= 0) {
-    // find first pos of "}<em>"
-    pos = readme.innerHTML.indexOf("}<em>", pos);
-    // replace "}<em>" and "</em>" after pos
-    readme.innerHTML =
-      readme.innerHTML.slice(0, pos) +
-      readme.innerHTML
-        .slice(pos)
-        .replace("}<em>", "}_")
-        .replace("</em>", "_");
-  }
-
-  pos = 0;
-  while (pos >= 0) {
-    // find first pos of "^<em>"
-    pos = readme.innerHTML.indexOf("^<em>", pos);
-    // replace "^<em>" and "</em>" after pos
-    readme.innerHTML =
-      readme.innerHTML.slice(0, pos) +
-      readme.innerHTML
-        .slice(pos)
-        .replace("^<em>", "^*")
-        .replace("</em>", "*");
-  }
+function transformProblematicTags(readme) {
+  readme.innerHTML = readme.innerHTML
+    // replace "}<em> ... </em>" with "}\@@em@start@@_ ... \@@em@end@@_"
+    .replace(/}<em.*?>([\s\S]*?)<\/em>/g, "}\\@@em@start@@_$1\\@@em@end@@_")
+    // replace ")<em> ... </em>" with ")\@@em@start@@_ ... \@@em@end@@_"
+    .replace(/\)<em.*?>([\s\S]*?)<\/em>/g, ")\\@@em@start@@_$1\\@@em@end@@_")
+    // replace "^<em> ... </em>" with "^\@@em@start@@* ... \@@em@end@@*"
+    .replace(/\^<em.*?>([\s\S]*?)<\/em>/g, "^\\@@em@start@@*$1\\@@em@end@@*")
+    // replace "<br>" with "\@@br@@"
+    .replace(/\\*<br.*?>/g, "\\@@br@@");
 }
 
-function renderMath() {
-  const readme = document.getElementById("readme");
+function revertNonProblematicTags(readme) {
+  readme.innerHTML = readme.innerHTML
+    .replace(/\\@@em@start@@_([\s\S]*?)\\@@em@end@@_/g, "<em>$1</em>")
+    .replace(/\\@@em@start@@\*([\s\S]*?)\\@@em@end@@\*/g, "<em>$1</em>")
+    .replace(/\\@@br@@/g, "<br>");
+}
 
-  if (!readme) {
-    return;
-  }
-
+function renderMathViaKatex(readme) {
   renderMathInElement(readme, {
     delimiters: [
       { left: "$$", right: "$$", display: true },
@@ -69,10 +48,27 @@ function renderMath() {
 
       // for \; spacing
       ";": "\\;",
+
+      // replace custom tags
+      "\\@@em@start@@": "",
+      "\\@@em@end@@": "",
+      "\\@@br@@": "\\\\",
     },
   });
 
   console.log("math rendered");
+}
+
+function renderMath() {
+  const readme = document.getElementById("readme");
+
+  if (!readme) {
+    return;
+  }
+
+  transformProblematicTags(readme);
+  renderMathViaKatex(readme);
+  revertNonProblematicTags(readme);
 }
 
 // on detected dom changes (when previewing markdown)
@@ -81,7 +77,6 @@ const readmeObserver = new MutationObserver((mutations) => {
     for (const addedNode of mutation.addedNodes) {
       if (addedNode.id === "readme") {
         console.log("readme dom change detected");
-        stripEmTags();
         renderMath();
         return; // break from all loops
       }
@@ -94,12 +89,10 @@ readmeObserver.observe(document.body, { childList: true, subtree: true });
 chrome.runtime.onMessage.addListener((request) => {
   if (request.type === Messages.ROUTE_CHANGED) {
     console.log("route change detected");
-    stripEmTags();
     renderMath();
   }
 });
 
 // on initial page load
 console.log("initial page load detected");
-stripEmTags();
 renderMath();
