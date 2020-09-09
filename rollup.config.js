@@ -22,7 +22,7 @@ export default [
     },
     plugins: [
       // delete the /dist folder
-      del({ targets: "dist/*", runOnce: true }),
+      ...(isProd ? [del({ targets: "dist/*", runOnce: true })] : []),
       // copy essential KaTeX files from /node_modules to /src
       copy({
         targets: [
