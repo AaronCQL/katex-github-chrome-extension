@@ -22,6 +22,16 @@ Some text before, the math: $\text{H}_h + X_\text{x}$, and some *italics after*.
 
 An `inline block` and $\text{H}_h + X_\text{x}$.
 
+Normal break  
+Next line
+
+$$
+\begin{aligned}
+x &= 2\\  
+y &= 3
+\end{aligned}
+$$
+
 $$
 \begin{aligned}
 &\frac{C}{C^*} \leq \rho(n) \rightarrow \text{ for minimisation, } \rho(n) \geq 1 \\
