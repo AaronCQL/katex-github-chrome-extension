@@ -9,7 +9,7 @@ import del from "rollup-plugin-delete";
 import { terser } from "rollup-plugin-terser";
 import zip from "rollup-plugin-zip";
 
-import transformCss from "./src/utils/transformCss";
+import transformCss from "./src/utils/cssTransformer";
 
 const isProd = process.env.NODE_ENV === "production";
 
