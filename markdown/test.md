@@ -24,6 +24,8 @@ $U_{j}\in\mathscr{U}_{j}$
 
 $U\in\mathscr{U}_{1}\cap\dotsb\cap\mathscr{U}_{n}\subset\mathscr{V}$
 
+ところが$U_{j}\subset U$より$U\in\mathscr{U}_{j}$を得る。つまり$U\in\mathscr{U}_{1}\cap\dotsb\cap\mathscr{U}_{n}\subset\mathscr{V}$となり矛盾する。
+
 (hello)_hello_
 
 {hello}_hello_
