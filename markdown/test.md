@@ -1,5 +1,7 @@
 # For testing purposes
 
+$U\in\mathscr{U}_{j}$ NORMAL TEXT $U\in\mathscr{U}_{1}\cap\dotsb\cap\mathscr{U}_{n}\subset\mathscr{V}$
+
 (hello)_hello_
 
 {hello}_hello_
@@ -17,8 +19,6 @@
 {hello}\*hello\*
 
 $(f_{i})_{\ast}\mathscr{H}\rightarrow f_{i}(z)$
-
-Some text before, the math: $\text{H}_h + X_\text{x}$, and some *italics after*.
 
 An `inline block` and $\text{H}_h + X_\text{x}$.
 
