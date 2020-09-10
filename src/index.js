@@ -13,6 +13,22 @@ function transformProblematicTags(readme) {
     .replace(/\\*<br.*?>/g, "\\@@br@@");
 }
 
+/**
+ * Cleans and removes the custom tags introduced in {@function transformProblematicTags}
+ * for all KaTeX nodes.
+ *
+ * @param {HTMLElement} readme
+ */
+function cleanTagsFromKatexElements(readme) {
+  const katexElements = readme.getElementsByClassName("katex");
+  for (const el of katexElements) {
+    el.innerHTML = el.innerHTML
+      .replace(/\\@@em@start@@/g, "")
+      .replace(/\\@@em@end@@/g, "")
+      .replace(/\\@@br@@/g, "\\\\");
+  }
+}
+
 function revertNonProblematicTags(readme) {
   readme.innerHTML = readme.innerHTML
     .replace(/\\@@em@start@@_([\s\S]*?)\\@@em@end@@_/g, "<em>$1</em>")
@@ -68,6 +84,7 @@ function renderMath() {
 
   transformProblematicTags(readme);
   renderMathViaKatex(readme);
+  cleanTagsFromKatexElements(readme);
   revertNonProblematicTags(readme);
 }
 
