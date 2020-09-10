@@ -1,30 +1,6 @@
 # For testing purposes
 
-$\bigcap_{\lambda\in\Lambda}\mathscr{F}_{\lambda}$
-
-$(Y_{i}, \mathscr{G}_{i})$
-
-$f_{i}\colon X\rightarrow Y_{i}$
-
-$h^{-1}(f_{i}^{-1}(G_{i}))\in\mathscr{H}$
-
-$(f_{i}\circ h)^{-1}(G_{i})\in\mathscr{H}$
-
-$(\prod Y_{i}, \prod\mathscr{G}_{i})$
-
-$\lbrace g_{ij}\circ f_{i} : i\in I, j\in J_{i} \rbrace$
-
-$V\cap W\in\mathscr{A}_{\neg S}$
-
-$\mathscr{V}\neq\mathscr{U}_{j}$
-
-$\mathscr{U}_{j}$
-
-$U_{j}\in\mathscr{U}_{j}$
-
-$U\in\mathscr{U}_{1}\cap\dotsb\cap\mathscr{U}_{n}\subset\mathscr{V}$
-
-ところが$U_{j}\subset U$より$U\in\mathscr{U}_{j}$を得る。つまり$U\in\mathscr{U}_{1}\cap\dotsb\cap\mathscr{U}_{n}\subset\mathscr{V}$となり矛盾する。
+$U\in\mathscr{U}_{j}$ NORMAL TEXT $U\in\mathscr{U}_{1}\cap\dotsb\cap\mathscr{U}_{n}\subset\mathscr{V}$
 
 (hello)_hello_
 
