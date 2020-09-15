@@ -7,3 +7,6 @@
 # katex required CSS and fonts
 src/assets/fonts
 src/assets/katex.css
+
+# jest coverage
+/coverage

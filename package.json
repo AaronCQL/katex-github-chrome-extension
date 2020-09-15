@@ -4,17 +4,21 @@
   "main": "src/manifest.json",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint rollup.config.js src/*.js",
+    "lint": "eslint rollup.config.js src/*.js tests/*.js",
+    "test": "jest --ci --coverage",
     "build": "rollup -c",
     "watch": "rollup -c -w",
     "build:prod": "NODE_ENV=production rollup -c"
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.10.4",
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
     "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-jest": "^24.0.1",
     "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.4.2",
     "katex": "^0.12.0",
     "prettier": "^2.1.1",
     "rollup": "^2.23.0",
@@ -23,5 +27,12 @@
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-terser": "^6.1.0",
     "rollup-plugin-zip": "^1.0.1"
+  },
+  "babel": {
+    "env": {
+      "test": {
+        "plugins": ["@babel/plugin-transform-modules-commonjs"]
+      }
+    }
   }
 }
