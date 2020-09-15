@@ -4,6 +4,7 @@
   "main": "src/manifest.json",
   "license": "MIT",
   "scripts": {
+    "lint": "eslint rollup.config.js src/*.js",
     "build": "rollup -c",
     "watch": "rollup -c -w",
     "build:prod": "NODE_ENV=production rollup -c"
@@ -11,7 +12,11 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "katex": "^0.12.0",
+    "prettier": "^2.1.1",
     "rollup": "^2.23.0",
     "rollup-plugin-chrome-extension": "^3.2.0",
     "rollup-plugin-copy": "^3.3.0",
