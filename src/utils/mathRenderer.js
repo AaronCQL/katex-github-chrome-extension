@@ -65,10 +65,10 @@ function renderMathViaKatex(readmeEl) {
  * Removes the custom tags introduced in {@function transformProblematicTags}
  * for all KaTeX nodes.
  *
- * @param {HTMLElement} readme
+ * @param {HTMLElement} readmeEl
  */
-function removeTagsFromKatexElements(readme) {
-  const katexElements = readme.getElementsByClassName("katex");
+function removeTagsFromKatexElements(readmeEl) {
+  const katexElements = readmeEl.getElementsByClassName("katex");
   for (const el of katexElements) {
     el.innerHTML = el.innerHTML
       .replace(/\\@@em@start@@/g, "")
@@ -94,19 +94,20 @@ function revertNonProblematicTags(readmeEl) {
 }
 
 /**
- * Renders all math by calling the required functions sequentially.
+ * Renders all math in the `readme` element by calling the required
+ * functions sequentially.
  */
 function renderMath() {
-  const readme = document.getElementById("readme");
+  const readmeEl = document.getElementById("readme");
 
-  if (!readme) {
+  if (!readmeEl) {
     return;
   }
 
-  transformProblematicTags(readme);
-  renderMathViaKatex(readme);
-  removeTagsFromKatexElements(readme);
-  revertNonProblematicTags(readme);
+  transformProblematicTags(readmeEl);
+  renderMathViaKatex(readmeEl);
+  removeTagsFromKatexElements(readmeEl);
+  revertNonProblematicTags(readmeEl);
 }
 
 export default renderMath;
