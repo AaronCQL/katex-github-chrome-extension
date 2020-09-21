@@ -1,6 +1,12 @@
+[cws]: https://chrome.google.com/webstore/detail/github-math-display/cgolaobglebjonjiblcjagnpmdmlgmda "Chrome Web Store link"
+[license]: https://github.com/AaronCQL/katex-github-chrome-extension/blob/master/LICENSE "License"
+
 # KaTeX GitHub Chrome Extension
 
-[cws]: https://chrome.google.com/webstore/detail/refined-github/cgolaobglebjonjiblcjagnpmdmlgmda "Chrome Web Store link"
+[![Chrome Web Store version](https://img.shields.io/chrome-web-store/v/cgolaobglebjonjiblcjagnpmdmlgmda)][cws]
+[![Chrome Web Store users](https://img.shields.io/chrome-web-store/users/cgolaobglebjonjiblcjagnpmdmlgmda?color=%234fb8ae)][cws]
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![MIT license](https://img.shields.io/github/license/aaroncql/katex-github-chrome-extension)][license]
 
 **Display LaTeX flavoured math in GitHub Markdown previews.**
 
