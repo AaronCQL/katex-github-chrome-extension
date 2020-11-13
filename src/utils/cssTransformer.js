@@ -1,14 +1,15 @@
 /**
  * Transforms the katex required CSS for use within this Chrome extension.
  *
- * @param {string} css the katex CSS string
+ * @param {string | Buffer} css the katex CSS
  */
 function transformCss(css) {
-  if (typeof css !== "string") {
-    throw new TypeError("Argument css must be of type string");
+  if (typeof css !== "string" && !Buffer.isBuffer(css)) {
+    throw new TypeError("Argument css must be of type string or buffer");
   }
 
   return css
+    .toString()
     .replace(/\.woff2\)/g, '.woff2")')
     .replace(/\.woff\)/g, '.woff")')
     .replace(/\.ttf\)/g, '.ttf")')
