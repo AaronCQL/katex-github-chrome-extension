@@ -49,7 +49,7 @@ const ORIGINAL_CSS_SNIPPET_2 = `.katex {
 }`;
 
 describe("argument type check", () => {
-  it("should throw type error if argument is not a string", () => {
+  it("should throw type error if argument is not a string or buffer", () => {
     expect(() => transformCss(new Date())).toThrow(TypeError);
     expect(() => transformCss(1)).toThrow(TypeError);
     expect(() => transformCss({})).toThrow(TypeError);
@@ -59,6 +59,10 @@ describe("argument type check", () => {
     expect(() => transformCss("")).not.toThrow();
     expect(() => transformCss("   ")).not.toThrow();
     expect(() => transformCss("testing")).not.toThrow();
+  });
+
+  it("should not throw any errors if argument is a buffer", () => {
+    expect(() => transformCss(Buffer.from("testing"))).not.toThrow();
   });
 });
 

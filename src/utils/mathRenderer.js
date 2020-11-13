@@ -13,6 +13,9 @@ function transformProblematicTags(readmeEl) {
     .replace(/\)<em.*?>([\s\S]*?)<\/em>/g, ")\\@@em@start@@_$1\\@@em@end@@_")
     // replace "^<em> ... </em>" with "^\@@em@start@@* ... \@@em@end@@*"
     .replace(/\^<em.*?>([\s\S]*?)<\/em>/g, "^\\@@em@start@@*$1\\@@em@end@@*")
+    // replace "+<em> ... </em>" with "+\@@em@start@@* ... \@@em@end@@_"
+    // assumes it's always "+_"; this will break if the math block contains a "+*"
+    .replace(/\+<em.*?>([\s\S]*?)<\/em>/g, "+\\@@em@start@@_$1\\@@em@end@@_")
     // replace "<br>" or "\<br>" with "\@@br@@"
     .replace(/\\*<br.*?>/g, "\\@@br@@");
 }
