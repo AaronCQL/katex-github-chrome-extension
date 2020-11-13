@@ -46,3 +46,10 @@ test();
 
 - A list
 - Another problematic $\text{H}_h + X_\text{x}$
+
+$$
+\begin{aligned}
+(a/\theta)+_{\theta}(b/\theta) &:=(a+b)/\theta \\
+(a/\theta)\cdot_{\theta}(b/\theta) &:=ab/\theta
+\end{aligned}
+$$
