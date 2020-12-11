@@ -30,5 +30,9 @@ chrome.runtime.onMessage.addListener((request) => {
 });
 
 // on initial page load
-console.log("initial page load detected");
-renderMath();
+// calls renderMath in the next event loop after document is ready
+// this prevents rendering before the markdown is properly initialised
+setTimeout(() => {
+  console.log("initial page load detected");
+  renderMath();
+});
