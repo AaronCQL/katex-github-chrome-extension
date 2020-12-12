@@ -1,6 +1,6 @@
 {
   "name": "katex-github-chrome-extension",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "main": "src/manifest.json",
   "license": "MIT",
   "scripts": {
@@ -31,7 +31,9 @@
   "babel": {
     "env": {
       "test": {
-        "plugins": ["@babel/plugin-transform-modules-commonjs"]
+        "plugins": [
+          "@babel/plugin-transform-modules-commonjs"
+        ]
       }
     }
   }
