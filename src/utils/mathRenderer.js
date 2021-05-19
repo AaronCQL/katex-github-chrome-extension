@@ -3,10 +3,10 @@ import renderMathInElement from "katex/dist/contrib/auto-render";
 /**
  * Transforms all problematic tags to custom tags.
  *
- * @param {HTMLElement} readmeEl the readme element to transform
+ * @param {HTMLElement} renderEl the element to transform
  */
-function transformProblematicTags(readmeEl) {
-  readmeEl.innerHTML = readmeEl.innerHTML
+function transformProblematicTags(renderEl) {
+  renderEl.innerHTML = renderEl.innerHTML
     // replace "}<em> ... </em>" with "}\@@em@start@@_ ... \@@em@end@@_"
     .replace(/}<em.*?>([\s\S]*?)<\/em>/g, "}\\@@em@start@@_$1\\@@em@end@@_")
     // replace ")<em> ... </em>" with ")\@@em@start@@_ ... \@@em@end@@_"
@@ -23,10 +23,10 @@ function transformProblematicTags(readmeEl) {
 /**
  * Renders all math blocks by calling Katex's {@function renderMathInElement}.
  *
- * @param {HTMLElement} readmeEl
+ * @param {HTMLElement} renderEl
  */
-function renderMathViaKatex(readmeEl) {
-  renderMathInElement(readmeEl, {
+function renderMathViaKatex(renderEl) {
+  renderMathInElement(renderEl, {
     delimiters: [
       { left: "$$", right: "$$", display: true },
       { left: "$", right: "$", display: false },
@@ -68,10 +68,10 @@ function renderMathViaKatex(readmeEl) {
  * Removes the custom tags introduced in {@function transformProblematicTags}
  * for all KaTeX nodes.
  *
- * @param {HTMLElement} readmeEl
+ * @param {HTMLElement} renderEl
  */
-function removeTagsFromKatexElements(readmeEl) {
-  const katexElements = readmeEl.getElementsByClassName("katex");
+function removeTagsFromKatexElements(renderEl) {
+  const katexElements = renderEl.getElementsByClassName("katex");
   for (const el of katexElements) {
     el.innerHTML = el.innerHTML
       .replace(/\\@@em@start@@/g, "")
@@ -87,10 +87,10 @@ function removeTagsFromKatexElements(readmeEl) {
  * This function must be called after {@function removeTagsFromKatexElements}
  * to avoid changing the custom tags within the katex rendered blocks.
  *
- * @param {HTMLElement} readmeEl
+ * @param {HTMLElement} renderEl
  */
-function revertNonProblematicTags(readmeEl) {
-  readmeEl.innerHTML = readmeEl.innerHTML
+function revertNonProblematicTags(renderEl) {
+  renderEl.innerHTML = renderEl.innerHTML
     .replace(/\\@@em@start@@_([\s\S]*?)\\@@em@end@@_/g, "<em>$1</em>")
     .replace(/\\@@em@start@@\*([\s\S]*?)\\@@em@end@@\*/g, "<em>$1</em>")
     .replace(/\\@@br@@/g, "<br>");
@@ -102,15 +102,18 @@ function revertNonProblematicTags(readmeEl) {
  */
 function renderMath() {
   const readmeEl = document.getElementById("readme");
+  const wikiEl = document.getElementById("wiki-body");
 
-  if (!readmeEl) {
+  if (!readmeEl && !wikiEl) {
     return;
   }
 
-  transformProblematicTags(readmeEl);
-  renderMathViaKatex(readmeEl);
-  removeTagsFromKatexElements(readmeEl);
-  revertNonProblematicTags(readmeEl);
+  const renderEl = readmeEl || wikiEl;
+
+  transformProblematicTags(renderEl);
+  renderMathViaKatex(renderEl);
+  removeTagsFromKatexElements(renderEl);
+  revertNonProblematicTags(renderEl);
 }
 
 export default renderMath;
