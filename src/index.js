@@ -11,6 +11,9 @@ import renderMath from "./utils/mathRenderer";
 const readmeObserver = new MutationObserver((mutations) => {
   for (const mutation of mutations) {
     for (const addedNode of mutation.addedNodes) {
+      if (!addedNode.tagName) {
+        continue;
+      }
       if (addedNode.id === "readme") {
         console.log("readme dom change detected");
         renderMath();
