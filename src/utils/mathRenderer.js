@@ -105,7 +105,7 @@ function renderMath() {
   const wikiEl = document.getElementById("wiki-body");
   const issueEl = document.getElementById("show_issue");
 
-  if (!readmeEl && !wikiEl && !issueEL) {
+  if (!readmeEl && !wikiEl && !issueEl) {
     return;
   }
 
