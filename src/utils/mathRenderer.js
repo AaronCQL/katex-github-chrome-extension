@@ -103,12 +103,13 @@ function revertNonProblematicTags(renderEl) {
 function renderMath() {
   const readmeEl = document.getElementById("readme");
   const wikiEl = document.getElementById("wiki-body");
+  const issueEl = document.getElementById("show_issue");
 
-  if (!readmeEl && !wikiEl) {
+  if (!readmeEl && !wikiEl && !issueEl) {
     return;
   }
 
-  const renderEl = readmeEl || wikiEl;
+  const renderEl = readmeEl || wikiEl || issueEl;
 
   transformProblematicTags(renderEl);
   renderMathViaKatex(renderEl);
