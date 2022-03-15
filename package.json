@@ -1,6 +1,6 @@
 {
   "name": "katex-github-chrome-extension",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "main": "src/manifest.json",
   "license": "MIT",
   "scripts": {
