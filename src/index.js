@@ -24,10 +24,13 @@ const readmeObserver = new MutationObserver((mutations) => {
 });
 readmeObserver.observe(document.body, { childList: true, subtree: true });
 
+let currentHash = location.hash;
+
 // on spa-like route changes
 chrome.runtime.onMessage.addListener((request) => {
-  if (request.type === Messages.ROUTE_CHANGED) {
+  if (request.type === Messages.ROUTE_CHANGED && currentHash !== location.hash) {
     console.log("route change detected");
+    currentHash = location.hash;
     renderMath();
   }
 });
