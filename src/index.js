@@ -24,12 +24,18 @@ const readmeObserver = new MutationObserver((mutations) => {
 });
 readmeObserver.observe(document.body, { childList: true, subtree: true });
 
+let currentHref = null;
 // on spa-like route changes
 chrome.runtime.onMessage.addListener((request) => {
-  if (request.type === Messages.ROUTE_CHANGED) {
-    console.log("route change detected");
-    renderMath();
+  if (request.type !== Messages.ROUTE_CHANGED) {
+    return;
   }
+  if (currentHref === location.href) {
+    return;
+  }
+  currentHref = location.href;
+  console.log("route change detected");
+  renderMath();
 });
 
 // on initial page load
