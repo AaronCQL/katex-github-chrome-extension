@@ -117,4 +117,14 @@ function renderMath() {
   revertNonProblematicTags(renderEl);
 }
 
-export default renderMath;
+function debounce(func, timeout) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, timeout);
+  };
+}
+
+export default debounce(renderMath, 1000);
